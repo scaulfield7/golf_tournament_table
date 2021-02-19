@@ -75,3 +75,17 @@ HTML
 CSS
 JavaScript
 React
+
+### Screenshots
+
+Golf tournament table:
+
+![golf_tournament_table](https://user-images.githubusercontent.com/43242833/108539725-41f4d980-72d8-11eb-9e47-0b8aaeb1b981.PNG)
+
+Golf tournament table search:
+
+![golf_tournament_table_search](https://user-images.githubusercontent.com/43242833/108539733-44efca00-72d8-11eb-9938-fa9634ac12eb.PNG)
+
+Golf tournament table sort:
+
+![golf_tournament_table_sort](https://user-images.githubusercontent.com/43242833/108539742-46b98d80-72d8-11eb-9685-74f03917e145.PNG)

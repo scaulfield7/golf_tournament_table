@@ -1,5 +1,6 @@
 import '../App.css';
 import React, { Component } from 'react';
+import { MDBDataTable } from 'mdbreact';
 import GolfData from '../data/golf_data.json';
 import logo from '../logo.png';
 
@@ -7,6 +8,64 @@ class GolfDataList extends Component {
 
     render () {
        
+        const data = {
+            // create columns array with relevant labels and fields - the field names used must match the object properties in the rows array
+            columns: [
+                {
+                    label: 'Position',
+                    field: 'position',
+                    sort: 'asc',
+                    width: 100
+                },
+                {
+                    label: 'Name',
+                    field: 'name',
+                    sort: 'asc',
+                    width: 270
+                },
+                {
+                    label: 'Total Score',
+                    field: 'totalScore',
+                    sort: 'asc',
+                    width: 200
+                },
+                {
+                    label: 'Round 1 Score',
+                    field: 'round1Score',
+                    sort: 'asc',
+                    width: 100
+                },
+                {
+                    label: 'Round 2 Score',
+                    field: 'round2Score',
+                    sort: 'asc',
+                    width: 110
+                },
+                {
+                    label: 'Round 3 Score',
+                    field: 'round3Score',
+                    sort: 'asc',
+                    width: 100
+                },
+                {
+                    label: 'Round 4 Score',
+                    field: 'round4Score',
+                    sort: 'asc',
+                    width: 100
+                },
+                {
+                    label: 'Total Strokes',
+                    field: 'totalStrokes',
+                    sort: 'asc',
+                    width: 100
+                }
+              ],
+              // create empty rows array of objects to be populated with an object of player data for each row
+              rows: [
+                {}
+            ]
+        };
+
         // declare arrays to be populated
         const names = [];
         const positions = [];
@@ -106,47 +165,42 @@ class GolfDataList extends Component {
             totalStrokes.push(totalStroke);
         }
 
+        // populate row array with object for each line in the table
+        for(var i = 0; i < GolfData.events[0].competitions[0].competitors.length; i++){
+            data.rows.push(
+                {
+                    position: data.rows[i].position = parseInt(GolfData.events[0].competitions[0].competitors[i].status.position.id),
+                    name: data.rows[i].name = GolfData.events[0].competitions[0].competitors[i].athlete.displayName.toString(),
+                    totalScore: data.rows[i].totalScore = parseInt(GolfData.events[0].competitions[0].competitors[i].score.value),
+                    round1Score: data.rows[i].round1Score = parseInt(totalScoresRound1[i]),
+                    round2Score: data.rows[i].round2Score = parseInt(totalScoresRound2[i]),
+                    round3Score: data.rows[i].round3Score = totalScoresRound3[i],
+                    round4Score: data.rows[i].round4Score = totalScoresRound4[i],
+                    totalStrokes: data.rows[i].totalStrokes = parseInt(totalStrokes[i])
+                },
+            )
+        }
+
         return (
             <div>
                 <table class="table table-sm">
                     <tbody>
                         <tr>
                             {GolfData.events.map((golfDetail, index)=>{
-                                return <th><img src={logo} alt="golf ball" width="25" height="25"></img> {golfDetail.name} {golfDetail.season.year}</th>
+                                return <th><img src={logo} alt="golf ball" width="20" height="20"></img> {golfDetail.name} {golfDetail.season.year}</th>
                             })}
                         </tr>
                     </tbody>
                 </table>
-                <div>
-                <table class="table table-striped table-sm">
-                    <thead>
-                        <tr>
-                            <th>Position</th>
-                            <th>Player</th>
-                            <th>Total Score</th>
-                            <th>Total Round 1</th>
-                            <th>Total Round 2</th>
-                            <th>Total Round 3</th>
-                            <th>Total Round 4</th>
-                            <th>Total Strokes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {positions.map((position, index) => (
-                            <tr key={index}>
-                                <td>{position}</td>
-                                <td>{names[index]}</td>
-                                <td>{totalScores[index]}</td>
-                                <td>{totalScoresRound1[index]}</td>
-                                <td>{totalScoresRound2[index]}</td>
-                                <td>{totalScoresRound3[index]}</td>
-                                <td>{totalScoresRound4[index]}</td>
-                                <td>{totalStrokes[index]}</td>
-                            </tr>
-                        ))}            
-                    </tbody>
-                </table>
-                </div>
+                <MDBDataTable
+                    striped
+                    bordered
+                    small
+                    data={data}
+                    paging={false}
+                    order={['position', 'desc']}
+                    responsive
+                />
             </div>
         )
     }

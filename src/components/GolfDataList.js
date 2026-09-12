@@ -76,18 +76,6 @@ class GolfDataList extends Component {
         const totalScoresRound4 = [];
         const totalStrokes = [];
 
-        // add arrays to object
-        const golfData = {
-            positions: [],
-            names: [],
-            totalScores: [],
-            totalScoresRound1: [],
-            totalScoresRound2: [],
-            totalScoresRound3: [],
-            totalScoresRound4: [],
-            totalStrokes: []
-        };
-
         // populate arrays with athletes' data
         for(var i = 0; i < GolfData.events[0].competitions[0].competitors.length; i++){
             names.push([GolfData.events[0].competitions[0].competitors[i].athlete.displayName].toString());

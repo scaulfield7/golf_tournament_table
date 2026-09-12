@@ -1,5 +1,5 @@
 import '../App.css';
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { MDBDataTable } from 'mdbreact';
 import GolfData from '../data/golf_data.json';
 import logo from '../logo.png';

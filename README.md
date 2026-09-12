@@ -71,10 +71,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Languages and Tools
 
-HTML
-CSS
-JavaScript
-React
+React, JavaScript, CSS and HTML
 
 ### Screenshots
 

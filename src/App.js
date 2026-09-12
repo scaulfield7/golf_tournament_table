@@ -3,7 +3,7 @@ import GolfDataList from './components/GolfDataList';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 function Header() {
   return(
